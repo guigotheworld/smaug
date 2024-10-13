@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://dycqd6ygx3cnh"]
+
+[ext_resource type="Script" path="res://scripts/jogador.gd" id="1_jwskq"]
+[ext_resource type="Texture2D" uid="uid://df6bsgfevamoh" path="res://assets/Sprite Pack 7/Sprite Pack 7/2 - Holly/Idle (32 x 32).png" id="1_omtgf"]
+[ext_resource type="Texture2D" uid="uid://d2vewhpy706ca" path="res://assets/smaug_cenario_01-remake-Recuperado.png" id="1_rb0mo"]
+
+[sub_resource type="TileSet" id="TileSet_m2l3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhen2"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l1wn"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb36a"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d143a"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar1je"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ebye"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p5f4"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14r86"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6hoc"]
+atlas = ExtResource("1_omtgf")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iq20o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhen2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l1wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb36a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d143a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar1je")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ebye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p5f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14r86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6hoc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb6ck"]
+size = Vector2(56.5, 17.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkv1y"]
+size = Vector2(481, 20)
+
+[node name="cena-01" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_m2l3y")
+format = 2
+
+[node name="SmaugCenario01-remake-recuperado" type="Sprite2D" parent="TileMap"]
+position = Vector2(240.444, 136.5)
+scale = Vector2(0.250926, 0.250926)
+texture = ExtResource("1_rb0mo")
+
+[node name="jogador" type="CharacterBody2D" parent="."]
+script = ExtResource("1_jwskq")
+
+[node name="animacao" type="AnimatedSprite2D" parent="jogador"]
+position = Vector2(49, 194)
+scale = Vector2(3.03125, 3.03125)
+sprite_frames = SubResource("SpriteFrames_iq20o")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.696329
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jogador"]
+position = Vector2(50, 233.625)
+shape = SubResource("RectangleShape2D_gb6ck")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-1, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(242, 235)
+shape = SubResource("RectangleShape2D_dkv1y")
+
+[node name="Window" type="Window" parent="."]
+position = Vector2i(50, 6)
