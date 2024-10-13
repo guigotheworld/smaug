@@ -6,6 +6,7 @@ func _on_jogar_pressed() -> void:
 
 
 func _on_opções_pressed() -> void:
+	pass # Replace with function body.
 
 
 
